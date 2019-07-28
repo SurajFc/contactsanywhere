@@ -1,0 +1,54 @@
+{% load static %}
+  <div class="col-md-6 col-lg-4 text-center ">
+      {% if c.gender == 'male' %}
+<div class="card-deck">
+<a href="{% url 'app:detail' c.id %}" class="custom-card">
+      <div class="card border-dark mb-6" style="width: 18rem;">
+        <img
+        src="
+            {% if c.image %}
+                {{ c.image.url }} 
+            {% else %}
+                {% static 'images/male.png' %}
+            {% endif %}    " 
+  class="card-img-top embed-responsive-item"  alt="..."/>
+  </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ c.name }}</h5>
+          <p class="card-text">{{ c.info }}</p>
+          <p class="card-text">{{ c.phone }}</p>
+           <a href="{% url 'app:detail' c.id %}" class="btn btn-primary">view</a>
+          <a href="{% url 'app:update' c.id %}" class="btn btn-primary">update</a>
+          <a href="{% url 'app:delete' c.id %}" class="btn btn-primary">delete</a>
+        </div>
+      </div>
+      </div> <br>
+  
+      {% else %}
+      
+<div class="card-deck">
+<a href="{% url 'app:detail' c.id %}" class="custom-card">
+      <div class="card border-dark mb-6" style="width: 18rem;">
+        <img
+        src="
+            {% if c.image %}
+                {{ c.image.url }} 
+            {% else %}
+                {% static 'images/female.png' %}
+            {% endif %}    " 
+  class="card-img-top embed-responsive-item"  alt="..."/>
+       </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ c.name }}</h5>
+          <p class="card-text">{{ c.info }}</p>
+          <p class="card-text">{{ c.phone }}</p>
+          <a href="{% url 'app:detail' c.id %}" class="btn btn-primary">view</a>
+          <a href="{% url 'app:update' c.id %}" class="btn btn-primary">update</a>
+          <a href="{% url 'app:delete' c.id %}" class="btn btn-primary">delete</a>
+        </div>
+      </div>
+     </div>
+     
+      {% endif %}
+      </div> <br>
+    

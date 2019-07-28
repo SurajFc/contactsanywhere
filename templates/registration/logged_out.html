@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}
+Logout
+{% endblock %}
+
+{% block body %}
+<div class="row">
+<div class="col-lg-4 my-auto">
+</div><br><br>
+<div class="col-lg-4 mt-3 my-auto">
+<p> You have been logout <br>
+ <a href="{% url 'login' %}" class="text-info">Login again?</a>
+</p>
+
+
+</div>
+
+</div>
+{% endblock %}

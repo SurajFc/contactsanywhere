@@ -1,0 +1,84 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %} Details {% endblock%}
+{% block style %}
+<style>
+.card-img-top {
+  width: 100%;
+  height: 60vh;
+  object-fit: cover;
+}
+.embed-responsive .card-img-top {
+    object-fit: cover;
+}
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+}
+</style>
+{% endblock %}
+{% block body %}
+<p class="font-weight-bold">
+<h1>Details</h1>
+<p>
+
+  {% if contact.manager == request.user %}
+  <div class="container">
+ 
+      {% if contact.gender == 'male' %}
+<div class="card-deck">
+<a href="{% url 'app:detail' contact.id %}" class="custom-card">
+      <div class="card" style="width: 18rem;">
+        <img
+        src="
+            {% if contact.image %}
+                {{ contact.image.url }} 
+            {% else %}
+                {% static 'images/male.png' %}
+            {% endif %}    " 
+  class="card-img-top embed-responsive-item"  alt="..."/>
+  </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ contact.name }}</h5>
+          <p class="card-text">{{ contact.info }}</p>
+           <p class="card-text">{{ contact.gender }}</p>
+          <p class="card-text">{{ contact.phone }}</p>
+          <a href="{% url 'app:update' contact.id %}" class="btn btn-primary">update</a>
+          <a href="{% url 'app:delete' contact.id %}" class="btn btn-primary">delete</a>
+        </div>
+      </div>
+      </div> <br>
+  
+      {% else %}
+      
+<div class="card-deck">
+<a href="{% url 'app:detail' contact.id %}" class="custom-card">
+      <div class="card" style="width: 18rem;">
+        <img
+        src="
+            {% if contact.image %}
+                {{ contact.image.url }} 
+            {% else %}
+                {% static 'images/female.png' %}
+            {% endif %} " 
+  class="card-img-top embed-responsive-item" height="180" wifth="100"  alt="..."/>
+       </a>
+        <div class="card-body">
+          <h5 class="card-title">{{ contact.name }}</h5>
+          <p class="card-text">{{ contact.info }}</p>
+          <p class="card-text">{{ contact.gender }}</p>
+          <p class="card-text">{{ contact.phone }}</p>
+          <a href="{% url 'app:update' contact.id %}" class="btn btn-primary">update</a>
+          <a href="{% url 'app:delete' contact.id %}" class="btn btn-primary">delete</a>
+        </div>
+      </div>
+     </div>
+     
+      {% endif %}
+ 
+  {% else %}
+<p> You don't have access to this page. </p>
+  {% endif %}
+  </div>
+{% endblock %}
+ 

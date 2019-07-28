@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+{% if contact.manger == request.user %}
+Update {{contact}}
+{% else %}
+update
+{% endif %}
+{% endblock %}
+
+{% block body %}
+{% if contact.manager == request.user %}
+<div class="row">
+<div class="col-lg-4 my-auto">
+</div>
+<div class="col-lg-4 my-auto">
+<h2> Create a new Contact </h2>
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{form | crispy}}
+<button type="submit" class="btn btn-info">Change</button>
+</form>
+</div>
+{% else %}
+<p> You don't have access to this page. </p>
+{% endif %}
+</div>
+{% endblock %}

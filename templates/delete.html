@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Delete 
+{% endblock %}
+
+{% block body %}
+{% if contact.manager == request.user %}
+<div class="row mx-3 my-3">
+<div class="col-lg-4 my-auto">
+</div>
+<div class="col-lg-4 my-auto">
+<h3> Delete ==> {{ contact }} ... ?</h3>
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{form | crispy}}
+<br>
+<button type="submit" class="btn btn-info">Delete</button>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{% url 'app:home'  %}" class="btn btn-info">Back</a>
+</form>
+
+</div>
+ {% else %}
+<p> You don't have access to this page. </p>
+  {% endif %}
+</div>
+{% endblock %}

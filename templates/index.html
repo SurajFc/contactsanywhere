@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %} Home {% endblock%}
+{% block style %}
+<style>
+.card-img-top {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+}
+.embed-responsive .card-img-top {
+    object-fit: cover;
+}
+a.custom-card,
+a.custom-card:hover {
+  color: inherit;
+}
+</style>
+{% endblock %}
+{% block body %}
+<p class="font-weight-bold">
+<h1>Here are your contacts</h1>
+<p>
+  {% if contact %}
+  <div class="row my-3 mx-3">
+    {% for c in contact %}
+   {% include 'partials/_card.html' %}
+    {% endfor %}
+</div>
+  {% else %}
+<p> You haven't save any contacts yet </p>
+  {% endif %}
+{% endblock %}
+ 

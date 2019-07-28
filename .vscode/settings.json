@@ -1,0 +1,6 @@
+{
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.pydocstyleEnabled": true,
+    "python.pythonPath": "/home/suraj/miniconda3/bin/python"
+}
