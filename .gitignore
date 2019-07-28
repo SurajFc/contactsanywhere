@@ -1,3 +1,4 @@
 static/ 
 media/
 .vscode/
+contacts/__pycache__/
